@@ -3,6 +3,18 @@
     <div class="padding">
         <br />
         <h2><strong>{{ name }}</strong> is trying to call you from <strong>{{ phone_number }}.</strong></h2>
+
+        <br/>
+
+        <button class="button button-full button-balanced" ng-click="accept()" ng-disabled="processing">
+            Accept call
+        </button>
+        <button class="button button-full button-dark" ng-click="reject()" ng-disabled="processing">
+            Reject call
+        </button>
+        <button class="button button-full button-positive" ng-click="askPurpose()" ng-disabled="processing">
+            Ask why they're calling
+        </button>
     </div>
   </ion-content>
 </ion-view>

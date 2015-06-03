@@ -1,5 +1,18 @@
-<ion-view view-title="Search">
-  <ion-content>
-    <h1>Search</h1>
+<ion-view>
+  <ion-content class="main-panel">
+    <div class="padding">
+        <h4>Caller says:</h4>
+
+        <h2>{{ purpose }}</h2>
+
+        <br/>
+
+        <button class="button button-full button-balanced" ng-click="accept()" ng-disabled="processing">
+            Accept call
+        </button>
+        <button class="button button-full button-dark" ng-click="reject()" ng-disabled="processing">
+            Reject call
+        </button>
+    </div>
   </ion-content>
 </ion-view>

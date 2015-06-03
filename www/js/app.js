@@ -76,6 +76,9 @@ angular.module('starter', [
 
   .state('app.purpose', {
     url: "/purpose",
+    params: {
+      purpose: null
+    },
     views: {
       'menuContent': {
         templateUrl: "templates/purpose.html",
