@@ -61,7 +61,7 @@ angular.module('starter.controllers', [])
   $scope.sendDecision = function(decision, sid) {
     $rootScope.processing = true;
 
-    $http.post('http://21a1f4fc.ngrok.io/decide', {
+    $http.post('http://leviathan.atbaker.me/decide', {
       decision: decision,
       sid: $rootScope.sid
     });
