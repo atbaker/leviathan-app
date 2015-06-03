@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $state, $ionicUser, $ionicPush, $ionicHistory) {
   
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -17,19 +17,28 @@ angular.module('starter.controllers', [])
 
   // Identify your user with the Ionic User Service
   $ionicUser.identify(user).then(function() {
-    alert('Identified user ' + user.name + '\n ID ' + user.user_id);
+    console.log('Identified user ' + user.name + '\n ID ' + user.user_id);
 
     console.log('Ionic Push: Registering user');
 
     // Register with the Ionic Push service.  All parameters are optional.
     $ionicPush.register({
-      canShowAlert: true, //Can pushes show an alert on your screen?
+      canShowAlert: false, //Can pushes show an alert on your screen?
       canSetBadge: true, //Can pushes update app icon badges?
       canPlaySound: true, //Can notifications play a sound?
       canRunActionsOnWake: true, //Can run actions outside the app,
       onNotification: function(notification) {
         // Handle new push notifications here
-        // console.log(notification);
+        console.log(notification);
+
+        $ionicHistory.nextViewOptions({
+          disableBack: true
+        });
+
+        if (notification.stage === 'name') {
+          $state.go('app.name', {name: notification.name, phone_number: notification.phone_number});
+        }
+
         return true;
       }
     });
@@ -37,6 +46,8 @@ angular.module('starter.controllers', [])
 })
 
 .controller('NameCtrl', function($scope, $stateParams) {
+  $scope.name = $stateParams.name;
+  $scope.phone_number = $stateParams.phone_number;
 })
 
 .controller('PurposeCtrl', function($scope, $stateParams) {

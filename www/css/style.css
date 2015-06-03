@@ -1,1 +1,11 @@
 /* Empty. Add your own CSS if you like */
+
+.main-panel {
+    background-color: #ef473a;
+    color: #fff;
+    text-align: center;
+}
+
+.main-panel h1, h2 {
+    color: #fff;
+}

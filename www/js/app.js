@@ -27,7 +27,6 @@ angular.module('starter', [
 
   // Handles incoming device tokens
   $rootScope.$on('$cordovaPush:tokenReceived', function(event, data) {
-    alert("Successfully registered token " + data.token);
     console.log('Ionic Push: Got token ', data.token, data.platform);
   });
 })
@@ -63,6 +62,10 @@ angular.module('starter', [
 
   .state('app.name', {
     url: "/name",
+    params: {
+      name: null,
+      phone_number: null
+    },
     views: {
       'menuContent': {
         templateUrl: "templates/name.html",
