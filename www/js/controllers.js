@@ -55,7 +55,7 @@ angular.module('starter.controllers', [])
   });
 
   $scope.sendDecision = function(decision, sid) {
-    $scope.processing = true;
+    $rootScope.processing = true;
 
     $http.post('http://21a1f4fc.ngrok.io/decide', {
       decision: decision,
@@ -81,6 +81,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PurposeCtrl', function($scope, $stateParams) {
+.controller('PurposeCtrl', function($scope, $rootScope, $stateParams) {
+  $rootScope.processing = false;
   $scope.purpose = $stateParams.purpose;
 });
