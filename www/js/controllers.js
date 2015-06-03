@@ -38,6 +38,10 @@ angular.module('starter.controllers', [])
         // Set the sid of the current call in rootScope
         $rootScope.sid = notification.sid;
 
+        // Update our processing variable so the new state's buttons
+        // aren't disabled
+        $rootScope.processing = false;
+
         if (notification.stage === 'name') {
           $state.go('app.name', {
             name: notification.name,
@@ -82,6 +86,5 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PurposeCtrl', function($scope, $rootScope, $stateParams) {
-  $rootScope.processing = false;
   $scope.purpose = $stateParams.purpose;
 });
